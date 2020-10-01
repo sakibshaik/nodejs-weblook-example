@@ -8,4 +8,9 @@ Controller.register = (req, res) => {
   res.status(status).send(helpers.clients.getAll());
 };
 
+Controller.triggerClients = (req, res) => {
+  res.status(202).send({});
+};
+
+
 module.exports = Controller;

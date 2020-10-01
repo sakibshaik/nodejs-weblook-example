@@ -52,3 +52,24 @@ describe('POST /api/webhooks', () => {
       done);
   });
 });
+
+describe('POST /api/webhooks/describe', () => {
+  it('should return 202 if client is not registered', (done) => {
+    request(app)
+      .post('/api/webhooks/test')
+      .send({
+        payload: ['aaaa', { valid: 'JSON' }],
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(202, {}, done);
+  });
+  it('should return 400 on bad request', (done) => {
+    request(app)
+      .post('/api/webhooks/test')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(400, { error: ['"payload" is required'] },
+        done);
+  });
+});

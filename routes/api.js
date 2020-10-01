@@ -8,6 +8,12 @@ const paths = [
     middlewares: [helpers.validate.registerPayload],
     handlers: webhooks.register,
   },
+  {
+    path: '/api/webhooks/test',
+    method: 'post',
+    middlewares: [helpers.validate.triggerClients],
+    handlers: webhooks.triggerClients,
+  },
 ];
 
 module.exports = paths;
