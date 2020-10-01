@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "chai": "^4.2.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-clean-routes": "^0.1.0",
     "helmet": "^4.1.1",
     "mocha": "^8.1.3",
     "morgan": "~1.9.1",
+    "sinon": "^9.1.0",
     "supertest": "^5.0.0"
   },
   "devDependencies": {

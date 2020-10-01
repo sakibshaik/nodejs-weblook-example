@@ -33,4 +33,22 @@ describe('POST /api/webhooks', () => {
       }],
       done);
   });
+
+  it('should return 400 on bad request', (done) => {
+    request(app)
+      .post('/api/webhooks')
+      .send({
+        urls: 'https://requestbin.fullcontact.com/rf385urfa',
+        tokens: 'foo',
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(400, {
+        error: [
+          '"url" is required',
+          '"token" is required',
+        ],
+      },
+      done);
+  });
 });
