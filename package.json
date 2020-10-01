@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha tests/**/*.test.js --reporter spec"
+    "test": "mocha tests/**/*.test.js --reporter spec",
+    "lint": "eslint tests/**/*.js routes/**/*.js helpers/**/*.js controller/**/*.js"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-clean-routes": "^0.1.0",
@@ -14,5 +16,10 @@
     "mocha": "^8.1.3",
     "morgan": "~1.9.1",
     "supertest": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
   }
 }

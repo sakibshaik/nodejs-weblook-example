@@ -1,12 +1,12 @@
-const webhooks = require("../controller/webhooks");
+const webhooks = require('../controller/webhooks');
 
 const paths = [
   {
-    'path' : '/api/webhooks',
-    'method' : 'get',
-    'middlewares' : [],
-    'handlers' : webhooks.register
-  }
+    path: '/api/webhooks',
+    method: 'post',
+    middlewares: [],
+    handlers: webhooks.register,
+  },
 ];
 
 module.exports = paths;
