@@ -9,11 +9,12 @@ describe('processor tests', () => {
   let clientStub;
   beforeEach(() => {
     requestStub = sinon.stub(request, 'asyncRequest').callsFake((options, data) => new Promise((resolve, reject) => {
+      // eslint-disable-next-line prefer-promise-reject-errors
       const status = data.token === 'fail-it' ? reject({ statusCode: 400 }) : resolve({ statusCode: 200 });
       resolve({ statusCode: status });
     }));
 
-    clientStub = sinon.stub(clients, 'getAll').callsFake((options) => [{
+    clientStub = sinon.stub(clients, 'getAll').callsFake(() => [{
       url: 'https://postman-echo.com/post?hand=randomName1',
       token: 'token-1',
     },

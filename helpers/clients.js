@@ -15,5 +15,4 @@ Clients.updateClients = (client) => {
   return true;
 };
 
-
 module.exports = Clients;

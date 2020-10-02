@@ -3,6 +3,7 @@ const helpers = require('../helpers');
 const processClients = async () => {
   const responseStatuses = { processed: [], failed: [] };
   const regiseredClients = helpers.clients.getAll();
+  // eslint-disable-next-line no-plusplus
   for (let index = 0; index < regiseredClients.length; index++) {
     const client = regiseredClients[index];
     const url = new URL(client.url);

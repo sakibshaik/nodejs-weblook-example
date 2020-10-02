@@ -11,6 +11,7 @@ const httpRequest = (reqParams, data) => new Promise((resolve, reject) => {
     const { headers } = response;
     const { statusCode } = response;
 
+    // eslint-disable-next-line no-return-assign
     response.on('data', (chunk) => body += chunk);
     response.on('end', () => resolve({ headers, statusCode, body }));
   }).on('error', reject);
