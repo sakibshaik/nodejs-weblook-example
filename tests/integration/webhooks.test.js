@@ -1,4 +1,5 @@
 const request = require('supertest');
+require('./nocker')
 const app = require('../../app');
 
 describe('POST /api/webhooks', () => {
@@ -6,13 +7,13 @@ describe('POST /api/webhooks', () => {
     request(app)
       .post('/api/webhooks')
       .send({
-        url: 'https://requestbin.fullcontact.com/rf385urf',
+        url: 'https://postman-echo-test.com/post?hand=mocker',
         token: 'foo',
       })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201, [{
-        url: 'https://requestbin.fullcontact.com/rf385urf',
+        url: 'https://postman-echo-test.com/post?hand=mocker',
         token: 'foo',
       }],
       done);
@@ -22,13 +23,13 @@ describe('POST /api/webhooks', () => {
     request(app)
       .post('/api/webhooks')
       .send({
-        url: 'https://requestbin.fullcontact.com/rf385urf',
+        url: 'https://postman-echo-test.com/post?hand=mocker',
         token: 'foo',
       })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, [{
-        url: 'https://requestbin.fullcontact.com/rf385urf',
+        url: 'https://postman-echo-test.com/post?hand=mocker',
         token: 'foo',
       }],
       done);
@@ -54,6 +55,27 @@ describe('POST /api/webhooks', () => {
 });
 
 describe('POST /api/webhooks/test', () => {
+  it('should return 201 if client is not registered and doesnt exist', (done) => {
+    request(app)
+      .post('/api/webhooks')
+      .send({
+        url: 'https://postman-echo-test.com/post?hand=mock1',
+        token: 'foo',
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201, [{
+        url: 'https://postman-echo-test.com/post?hand=mocker',
+        token: 'foo',
+      },
+      {
+        url: 'https://postman-echo-test.com/post?hand=mock1',
+        token: 'foo',
+      },
+      ],
+      done);
+  });
+
   it('should return 202 if client is not registered', (done) => {
     request(app)
       .post('/api/webhooks/test')
