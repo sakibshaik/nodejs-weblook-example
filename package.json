@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "mocha tests/**/*.test.js --reporter spec",
+    "start": "NODE_ENV=local GENERATORFREQUENCY=5000 node ./bin/www",
+    "test": "NODE_ENV=test GENERATORFREQUENCY=400 mocha tests/**/*.test.js --reporter spec",
     "lint": "eslint tests/**/*.js routes/**/*.js helpers/**/*.js controller/**/*.js"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-clean-routes": "^0.1.0",
+    "faker": "^5.1.0",
     "helmet": "^4.1.1",
     "mocha": "^8.1.3",
     "morgan": "~1.9.1",
