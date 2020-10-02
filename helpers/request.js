@@ -30,7 +30,7 @@ request.asyncRequest = async (options, data) => {
     }
     return Promise.reject(result);
   } catch (e) {
-    return e;
+    return Promise.reject(e);
   }
 };
 

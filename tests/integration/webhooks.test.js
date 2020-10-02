@@ -53,7 +53,7 @@ describe('POST /api/webhooks', () => {
   });
 });
 
-describe('POST /api/webhooks/describe', () => {
+describe('POST /api/webhooks/test', () => {
   it('should return 202 if client is not registered', (done) => {
     request(app)
       .post('/api/webhooks/test')

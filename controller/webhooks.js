@@ -1,4 +1,5 @@
 const helpers = require('../helpers');
+const processor = require('./processor')
 
 const Controller = {};
 
@@ -10,6 +11,7 @@ Controller.register = (req, res) => {
 
 Controller.triggerClients = (req, res) => {
   res.status(202).send({});
+  processor.processClients();
 };
 
 
