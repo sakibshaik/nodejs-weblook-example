@@ -4,7 +4,6 @@ const event = require('./event').eventBus;
 
 const frequency = process.env.GENERATORFREQUENCY || 5000;
 
-console.log(frequency, 'frequency', process.env.NODE_ENV)
 
 function generateRandomData() {
   return {

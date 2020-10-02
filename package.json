@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=local GENERATORFREQUENCY=5000 node ./bin/www",
-    "test": "NODE_ENV=test GENERATORFREQUENCY=400 mocha tests/**/*.test.js --reporter spec",
+    "test": "NODE_ENV=test GENERATORFREQUENCY=400 mocha tests/**/*.test.js --exit --silent --reporter spec",
     "lint": "eslint tests/**/*.js routes/**/*.js helpers/**/*.js controller/**/*.js"
   },
   "dependencies": {
