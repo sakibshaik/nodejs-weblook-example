@@ -35,7 +35,7 @@ describe('processor tests', () => {
   });
 
   it('should process all the clients successfully', (done) => {
-    processor.processClients().then((processedClients) => {
+    processor.processClients({ payload: ['testing', { valid: 'JSON' }] }).then((processedClients) => {
       expect(processedClients.processed.length).to.equal(2);
       expect(processedClients.failed.length).to.equal(1);
       done();

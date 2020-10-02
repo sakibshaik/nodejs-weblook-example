@@ -11,7 +11,7 @@ Controller.register = (req, res) => {
 
 Controller.triggerClients = (req, res) => {
   res.status(202).send({});
-  processor.processClients();
+  processor.processClients(req.body);
 };
 
 module.exports = Controller;

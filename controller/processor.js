@@ -1,6 +1,6 @@
 const helpers = require('../helpers');
 
-const processClients = async () => {
+const processClients = async (payload) => {
   const responseStatuses = { processed: [], failed: [] };
   const regiseredClients = helpers.clients.getAll();
   // eslint-disable-next-line no-plusplus
@@ -16,8 +16,9 @@ const processClients = async () => {
       method: 'POST',
     };
     try {
+      const data = { token: client.token, payload };
       // eslint-disable-next-line no-await-in-loop
-      await helpers.request.asyncRequest(options, client);
+      await helpers.request.asyncRequest(options, data);
       responseStatuses.processed.push(client.url);
     } catch (e) {
       responseStatuses.failed.push(`${client.url} - ${e}`);
